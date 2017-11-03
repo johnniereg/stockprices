@@ -1,8 +1,29 @@
+/**
+ * Given an input, checks that it is an array containing only numbers.
+ * @param  {<anything>} input   What we want to check to see if it is an array with numbers.
+ * @return {Boolean}       True or False.
+ */
+
+function inputChecker (input) {
+  if (Array.isArray(input) === false) {
+    return false;
+  }
+  var state = true;
+  input.forEach(function(item) {
+    if (typeof item !== 'number') {
+      state = false;
+    }
+  });
+  return state;
+}
 
 /**
  * Given an array of numbers that represent stock prices on given days
  * returns the maximum profit possible from buying at the lowest and
  * selling at the highest price.
+ *
+ * For example: Given [45, 24, 35, 31, 40, 38, 11]
+ * the biggest profit would be 16.
  *
  * @param  {Array <numbers>} stockprices An array containing numbers.
  * @return {number}             The maximum profit when there is profit. Or -1 when no profit.
@@ -10,7 +31,7 @@
 
 function maxProfits (stockprices) {
   // Check that the input is an array.
-  if (inputChecker(stockprices) == false) {
+  if (inputChecker(stockprices) === false) {
     return "Not a valid input.";
   }
   // If no profit then we want to return -1.
@@ -36,25 +57,3 @@ function maxProfits (stockprices) {
   }
   return biggestProfit;
 }
-
-// Check that the input is a valid array filled with numbers.
-
-function inputChecker (array) {
-  if (Array.isArray(array) == false) {
-    return false;
-  }
-  var state = true;
-  array.forEach(function(item) {
-    if (typeof item !== 'number') {
-      state = false;
-    }
-  });
-  return state;
-}
-
-// console.log(maxProfits("abcdefg"));
-// console.log(maxProfits([1, 2, 3, 5]));
-// console.log(maxProfits(["a", "b", 3, "a"]));
-
-
-
