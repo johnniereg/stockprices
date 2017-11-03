@@ -10,8 +10,8 @@
 
 function maxProfits (stockprices) {
   // Check that the input is an array.
-  if (array == false) {
-    return null;
+  if (inputChecker(stockprices) == false) {
+    return "Not a valid input.";
   }
   // If no profit then we want to return -1.
   var biggestProfit = -1;
@@ -43,11 +43,18 @@ function inputChecker (array) {
   if (Array.isArray(array) == false) {
     return false;
   }
-
-
+  var state = true;
+  array.forEach(function(item) {
+    if (typeof item !== 'number') {
+      state = false;
+    }
+  });
+  return state;
 }
 
-console.log(maxProfits("abcdefg"));
+// console.log(maxProfits("abcdefg"));
+// console.log(maxProfits([1, 2, 3, 5]));
+// console.log(maxProfits(["a", "b", 3, "a"]));
 
 
 
