@@ -15,23 +15,13 @@ function maxProfits (stockprices) {
 
     var buyingPrice = stockprices[i];
 
-    for (var j = 0; j < stockprices.length; j++) {
+    for (var j = i; j < stockprices.length; j++) {
       var sellingPrice = stockprices[j];
-
-      // console.log("Buying at", buyingPrice, "selling at", sellingPrice);
-
-
-      var profit = sellingPrice - buyingPrice;
-
-      // console.log(profit);
-
-      // console.log(profit);
-
-      // console.log(profit);
+      if (buyingPrice < sellingPrice) {
+        var profit = sellingPrice - buyingPrice;
+      }
       if (profit >= biggestProfit) {
-
         biggestProfit = profit;
-
       }
 
     }
